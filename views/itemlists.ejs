@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wishlist <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/scripts.js"></script>
+  </head>
+  <body>
+    <div class="centered header">
+        <h2>One Wish</h2>
+        <form action="/users/logout" method="post">
+          <button type="submit">Logout</button>
+        </form>
+    </div>
+    <main>
+        <div class="wishlist__header">
+            <h2>Wishlist: <%= title %></h2>
+            <a href="/users/user" class="btn">Return to Wishlists</a>
+            <button onclick="share('<%= wishlistId %>')">Share Wishlist</button>
+            <button>Recommend Item</button>
+            <button onclick="openForm()">Add New Item</button>
+        </div>
+        <div id="createWishList" class="centered popup">
+            <form action="/users/addItem" method="post">
+                <label for="itemName">Item Name</label>
+                <input type="text" name="itemName" required><br>
+
+                <label for="itemPrice">Item's Price</label>
+                <input type="number" name="itemPrice" step=".01" required><br>
+
+                <label for="itemURL">Link to Item</label>
+                <input type="url" name="itemURL" required><br>
+                <input type="hidden" value="<%= wishlistId %>" name="wishlistId">
+                <button type="submit">Add New Item</button>
+            </form>
+            <button onclick="closeForm()">Cancel</button>
+        </div>
+        <% if (items.length > 0) { %>
+          <% for (let item of items) { %>
+            <div class="items">
+              <h3><%= item.itemName %></h3>
+              <h3 class="price">$ <%= item.itemPrice %></h3>
+              <a href="<%= item.itemURL %>" class="btn purchaseURL">Purchase Link</a>
+              <form action="/users/deleteItem" method="post">
+                <input type="hidden" value="<%= item._id %>" name="itemId">
+                <input type="hidden" value="<%= wishlistId %>" name="wishlistId">
+                <button type="submit" class="delete">Delete</button>
+              </form>
+            </div><br>
+          <% } %>
+        <% } else { %>
+          <h1>No Items in Wishlist</h1>
+        <% } %>
+        <!-- <div class="wishlists">
+            <h3>Item's Name</h3>
+            <h3>Price of Item</h3>
+            <a href="">Link to Purchase</a>
+        </div> -->
+    </main>
+  </body>
+</html>

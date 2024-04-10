@@ -1,0 +1,103 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.login-form{
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
+}
+
+.centered {
+  text-align: center;
+}
+
+.header{
+  /* background: white; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wishlist__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 95%;
+  margin-inline: auto;
+}
+
+.wishlists{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+
+.items{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+.buyersView{
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+/* .price{
+  position: absolute;
+  left: 35%;
+}
+
+.purchaseURL{
+  position: absolute;
+  left: 60%;
+}
+
+.delete{
+  position: absolute;
+  left: 89%;
+} */
+
+.popup{
+  display: none;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+  font: inherit;
+  border: 1px solid #00695c;
+  color: #00695c;
+  background: white;
+  border-radius: 3px;
+  cursor: pointer;
+}

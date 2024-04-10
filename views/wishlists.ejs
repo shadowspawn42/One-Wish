@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/scripts.js"></script>
+  </head>
+  <body>
+    <div class="centered header">
+        <h2>One Wish</h2>
+        <form action="/users/logout" method="post">
+          <button type="submit">Logout</button>
+        </form>
+        
+    </div>
+    <main>
+        <div class="wishlist__header">
+            <h3>User's Wish List</h3>
+            <button onclick="openForm()">Create New List</button>
+        </div>
+        <div id="createWishList" class="centered popup">
+            <form action="/users/addWishList" method="post">
+                <label for="wishListName">WishList Name</label><br>
+                <input type="text" name="wishListName" required><br>
+
+                <button type="submit">Create New WishList</button>
+            </form>
+            <button onclick="closeForm()">Cancel</button>
+        </div>
+        <% if (wishlists.length > 0) { %>
+          <!-- <div class="grid"> -->
+            <% for (let wishlist of wishlists) { %>
+              <div class="wishlists">
+                <h3>
+                  <%= wishlist.wishlistName %>
+                </h3>
+                <a class="btn" href="/users/wishlist/<%= wishlist._id %>">View Wishlist</a>
+                <form action="/users/deleteWishlist" method="post">
+                  <input type="hidden" value="<%= wishlist._id %>" name="wishlistId">
+                  <button type="submit">Delete</button>
+                </form>
+              </div><br>
+            <% } %>
+          </div>
+          <% } else { %>
+            <h1>No Wishlists found</h1>
+            <% } %>
+          
+        <!-- <div class="wishlists">
+            <h3>Wishlist's name</h3>
+            <button>Delete</button>
+        </div> -->
+    </main>
+  </body>
+</html>

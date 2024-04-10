@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wishlist <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/scripts.js"></script>
+  </head>
+  <body>
+    <div class="centered header">
+        <h2>One Wish</h2>
+    </div>
+    <main>
+        <div class="wishlist__header">
+            <h2>Wishlist: <%= title %></h2>
+        </div>
+        <% if (items.length > 0) { %>
+          <% for (let item of items) { %>
+            <div class="buyersView">
+              <h3><%= item.itemName %></h3>
+              <h3>$ <%= item.itemPrice %></h3>
+              <% if (item.itemBought) { %>
+                <h3 style="color: red;">Item has been bought</h3>
+                <% } else { %>
+                <h3 style="color: green;">Item has not been bought</h3>
+                <% } %>
+              <a href="<%= item.itemURL %>" class="btn">Purchase Link</a>
+              <form action="itemBought" method="post">
+                <input type="hidden" value="<%= item._id %>" name="itemId">
+                <input type="hidden" value="<%= wishlistId %>" name="wishlistId">
+                <button type="submit">Item Bought</button>
+              </form>
+            </div><br>
+          <% } %>
+        <% } else { %>
+          <h1>No Items in Wishlist</h1>
+        <% } %>
+    </main>
+  </body>
+</html>

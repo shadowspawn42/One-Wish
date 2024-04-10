@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %> - Sign Up</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="centered header">
+        <h2>One Wish</h2>
+        <button>Sign Up</button>
+    </div>
+    <main>
+        <% if(errorMessage) { %>
+            <h3 class="centered" style="color: red;">Error Message</h3>
+            <div class="centered"><%= errorMessage %></div><br>
+        <% } %>
+        <form class="centered login-form" action="/users/addUser" method="post">
+            <div>
+                <label for="username">Username</label><br>
+                <input type="username" name="username" id="username" value="">
+            </div>
+            <div>
+                <label for="password">Password</label><br>
+                <input type="password" name="password" id="password" value="">
+            </div><br>
+            <input type="hidden">
+            <button type="submit">Create User</button>
+        </form><br>
+    </main>
+  </body>
+</html>
